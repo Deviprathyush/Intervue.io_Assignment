@@ -27,19 +27,23 @@ io.on('connection', (socket) => {
     socket.data.name = name;
     socket.emit('poll:current', currentPoll);
   });
+  
+socket.on('teacher:create_poll', ({ question, options, time }) => {
+  console.log("📢 Teacher created a poll:", question);
 
-  socket.on('teacher:create_poll', ({ question, options, time }) => {
-    currentPoll = { question, options, time: time || 60 };
-    results = {};
-    answeredStudents.clear();
-    options.forEach(opt => results[opt] = 0);
-    io.emit('poll:new', currentPoll);
+  currentPoll = { question, options, time: time || 60 };
+  results = {};
+  answeredStudents.clear();
+  options.forEach(opt => results[opt] = 0);
 
-    setTimeout(() => {
-      io.emit('poll:timeout');
-      currentPoll = null;
-    }, currentPoll.time * 1000);
-  });
+  io.emit('poll:new', currentPoll);
+
+  setTimeout(() => {
+    io.emit('poll:timeout');
+    currentPoll = null;
+  }, currentPoll.time * 1000);
+});
+
 
   socket.on('student:answer_poll', (data) => {
     if (answeredStudents.has(data.name)) return;
