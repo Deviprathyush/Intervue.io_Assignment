@@ -1,9 +1,13 @@
 name: Deploy React Frontend to GitHub Pages
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
       - main
+
 
 jobs:
   build-and-deploy:
