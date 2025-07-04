@@ -14,4 +14,4 @@ npm install react-router-dom socket.io-client tailwindcss
 npm start
 
 
-after any changes to the code just do "npm start"
+after any changes to the code just do "npm start".
