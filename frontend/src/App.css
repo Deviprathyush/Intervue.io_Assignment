@@ -1,38 +1,281 @@
-.App {
+/* General Layout */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fdfdfe;
+}
+
+/* Page Layout */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fdfdfe;
+}
+
+.form-section {
+  width: 100%;
+  max-width: 640px;
+  margin: auto;
+  padding: 60px 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Badge label */
+.badge {
+  background-color: #6b4eff;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 4px 12px;
+  display: inline-block;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Typography */
+.bold {
+  font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0 24px;
+}
+
+/* Home Page: Role Selection */
+.role-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.role-option {
+  flex: 1;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fafafa;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.role-option:hover {
+  border-color: #5767d0;
+}
+
+.role-option.selected {
+  border-color: #5767d0;
+  background-color: #f3f5ff;
+}
+
+.desc {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Buttons */
+.continue-btn {
+  width: 100%;
+  max-width: 480px;
+  padding: 14px;
+  background-color: #6b4eff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.continue-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Inputs */
+.input-box,
+.textarea,
+.big-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  border-radius: 12px;
+  border: 1.5px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.big-input {
+  border: 2px solid #5767d0;
+}
+
+/* Poll Creation (Teacher Page) */
+.textarea {
+  height: 80px;
+  resize: none;
+}
+
+.char-limit {
+  text-align: right;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  float: right;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+/* Poll Options */
+.option-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.radio-group {
+  display: flex;
+  gap: 8px;
+}
+
+.add-option-btn {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #5767d0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 20px;
+}
+
+.option-left {
+  flex: 1;
+}
+
+.option-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.loading-circle {
+  font-size: 36px;
+  animation: spin 1s linear infinite;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.question-text {
+  font-weight: 500;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.poll-options {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.poll-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.poll-option {
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 14px;
+  background: #f4f4f4;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.poll-option.selected {
+  background-color: #dcd9ff;
+  border-color: #6b4eff;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.result-bar {
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  height: 36px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  position: relative;
+}
+
+.result-label {
+  position: absolute;
+  left: 12px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.result-fill {
+  background-color: #6c63ff;
   color: white;
+  text-align: right;
+  padding-right: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: width 0.3s ease;
+  border-radius: 8px;
+}
+.poll-result-bar {
+  margin-bottom: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.bar-text {
+  margin-bottom: 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.progress-bar {
+  height: 20px;
+  background-color: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.filler {
+  height: 100%;
+  background-color: #5a4bff;
+  transition: width 0.3s ease-in-out;
 }
